@@ -1,4 +1,4 @@
-# Projeto Caderneta Config Server - FIAP - 76AOJ
+# Projeto Caderneta Config Server - FIAP - 76AOJ ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/sironAzevedo/caderneta-config-server/Heroku-caderneta-server)
 
 ## Index
 * [About the project](#about)
