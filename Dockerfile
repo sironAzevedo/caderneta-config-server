@@ -1,5 +1,11 @@
-FROM openjdk:11
-VOLUME /tmp
+FROM maven:3.6.3-jdk-11-slim AS build
+RUN mkdir -p /workspace
+WORKDIR /workspace
+COPY pom.xml /workspace
+COPY src /workspace/src
+RUN mvn -B -f pom.xml clean package -DskipTests
+
+FROM openjdk:11-jdk-slim
+COPY --from=build /workspace/target/*.jar caderneta-config-server.jar
 EXPOSE 8888
-ADD ./target/caderneta-config-server-0.0.1-SNAPSHOT.jar caderneta-config-server.jar
 ENTRYPOINT ["java","-jar","/caderneta-config-server.jar"]
